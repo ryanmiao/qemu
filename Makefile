@@ -283,6 +283,14 @@ $(qga-obj-y) qemu-ga.o: $(QGALIB_GEN)
 qemu-ga$(EXESUF): $(qga-obj-y) libqemuutil.a libqemustub.a
 	$(call LINK, $^)
 
+IVSHMEM_CLIENT_OBJS=$(addprefix $(SRC_PATH)/contrib/ivshmem-client/, ivshmem-client.o main.o)
+ivshmem-client$(EXESUF): $(IVSHMEM_CLIENT_OBJS)
+	$(call LINK, $^)
+
+IVSHMEM_SERVER_OBJS=$(addprefix $(SRC_PATH)/contrib/ivshmem-server/, ivshmem-server.o main.o)
+ivshmem-server$(EXESUF): $(IVSHMEM_SERVER_OBJS) libqemuutil.a libqemustub.a
+	$(call LINK, $^)
+
 clean:
 # avoid old build problems by removing potentially incorrect old files
 	rm -f config.mak op-i386.h opc-i386.h gen-op-i386.h op-arm.h opc-arm.h gen-op-arm.h

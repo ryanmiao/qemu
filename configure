@@ -4136,6 +4136,9 @@ if test "$want_tools" = "yes" ; then
   if [ "$linux" = "yes" -o "$bsd" = "yes" -o "$solaris" = "yes" ] ; then
     tools="qemu-nbd\$(EXESUF) $tools"
   fi
+  if [ "$kvm" = "yes" ] ; then
+    tools="ivshmem-client\$(EXESUF) ivshmem-server\$(EXESUF) $tools"
+  fi
 fi
 if test "$softmmu" = yes ; then
   if test "$virtfs" != no ; then
