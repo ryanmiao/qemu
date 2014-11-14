@@ -30,6 +30,7 @@
 #include <sys/select.h>
 
 #include "qemu/queue.h"
+#include "hw/misc/ivshmem.h"
 
 /**
  * Maximum number of notification vectors supported by the server
